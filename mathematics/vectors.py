@@ -1,3 +1,5 @@
+import numpy as np
+
 def dot_product(vector_a, vector_b):
     """Calculates the dot product of two vectors of equal dimension."""
     if len(vector_a) != len(vector_b):
@@ -16,6 +18,18 @@ def scalar_multiply(vector, scalar):
         result.append(vector[i] * scalar)
     return result
 
+def matrix_column_dot_product(matrix_a, matrix_b):
+    """Calculates the dot product of corresponding columns between two matrices."""
+    results = []
+    
+    num_cols = matrix_a.shape[1]
+    
+    for i in range(num_cols):
+        col_a = matrix_a[:, i]
+        col_b = matrix_b[:, i]
+        results.append(np.dot(col_a, col_b))
+        
+    return results
 
 if __name__ == "__main__":
     # --- Dot Product Test ---
@@ -27,3 +41,13 @@ if __name__ == "__main__":
     v3 = [3, -1]
     lambda_val = -0.3
     print(f"Scalar Multiplication of {v3} with {lambda_val}: {scalar_multiply(v3, lambda_val)}")
+
+    # --- Matrix Column Dot Product Test ---
+    matrix_A = np.random.randn(4, 6)
+    matrix_B = np.random.randn(4, 6)
+
+    print(f"Dot product results of each pair of columns:\n{matrix_column_dot_product(matrix_A, matrix_B)}")
+
+
+
+
