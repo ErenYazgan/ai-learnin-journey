@@ -50,6 +50,16 @@ def cosine_similarity(vector_a, vector_b):
         
     return numerator / denominator
 
+def hadamard_product(vector_a, vector_b):
+    """Calculates element-wise multiplication (masking) of two vectors."""
+    if len(vector_a) != len(vector_b):
+        raise ValueError("Vectors must have the same dimension.")
+        
+    result = []
+    for i in range(len(vector_a)):
+        result.append(vector_a[i] * vector_b[i])  
+    return result
+
 if __name__ == "__main__":
     # --- Dot Product Test ---
     v1 = [1, 2, 3]
@@ -80,3 +90,10 @@ if __name__ == "__main__":
     vector_b = np.random.randn(2)
 
     print(f"similarity score of random vectors:\n{cosine_similarity(vector_a, vector_b)}")
+ 
+    # --- hadamard product ---
+
+    vector_a = [4,5,1]
+    vector_b = [3,1,4]
+
+    print(f"multiplication (masking) of two vectors:\n{hadamard_product(vector_a, vector_b)}")
