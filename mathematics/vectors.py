@@ -10,6 +10,20 @@ def dot_product(vector_a, vector_b):
         total += vector_a[i] * vector_b[i]
     return total
 
+def vector_length(vector):
+    """Calculates the Euclidean length (L2 Norm) of a vector from the dot product function i made"""
+
+    squared_sum = dot_product(vector, vector)
+
+    return math.sqrt(squared_sum)
+
+def vector_length(vector):
+    """Calculates vector length"""
+    total = 0
+    for i in range(len(vector)):
+        total += vector[i] * vector[i]
+    return total
+
 
 def scalar_multiply(vector, scalar):
     """Multiplies a vector by a scalar value."""
@@ -48,6 +62,15 @@ if __name__ == "__main__":
 
     print(f"Dot product results of each pair of columns:\n{matrix_column_dot_product(matrix_A, matrix_B)}")
 
+    # --- Vector Length Test From dot product Function i made ---
+    v_test = [3, 4]
+    print(f"Vector Length of {v_test}: {vector_length(v_test)}")
 
+    # Random length test
+    v_random = np.random.randn(2)
+    print(f"Random Vector Length: {vector_length(v_random)}")
 
-
+    # --- vector length test ---
+    vector = [3,4]
+   
+    print(f"vector length:\n{np.sqrt(vector_length(vector))}")
