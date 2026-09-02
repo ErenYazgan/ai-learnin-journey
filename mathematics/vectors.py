@@ -1,3 +1,4 @@
+import math
 import numpy as np
 
 def dot_product(vector_a, vector_b):
@@ -11,19 +12,11 @@ def dot_product(vector_a, vector_b):
     return total
 
 def vector_length(vector):
-    """Calculates the Euclidean length (L2 Norm) of a vector from the dot product function i made"""
+    """Calculates the Euclidean length (L2 Norm) of a vector """
 
     squared_sum = dot_product(vector, vector)
 
     return math.sqrt(squared_sum)
-
-def vector_length(vector):
-    """Calculates vector length"""
-    total = 0
-    for i in range(len(vector)):
-        total += vector[i] * vector[i]
-    return total
-
 
 def scalar_multiply(vector, scalar):
     """Multiplies a vector by a scalar value."""
@@ -44,6 +37,18 @@ def matrix_column_dot_product(matrix_a, matrix_b):
         results.append(np.dot(col_a, col_b))
         
     return results
+
+def cosine_similarity(vector_a, vector_b):
+    """Calculates the cosine similarity score (-1 to 1) between two vectors."""
+
+    numerator = dot_product(vector_a, vector_b)
+    
+    denominator = vector_length(vector_a) * vector_length(vector_b)
+    
+    if denominator == 0:
+        raise ValueError("Zero vectors have no defined cosine similarity.")
+        
+    return numerator / denominator
 
 if __name__ == "__main__":
     # --- Dot Product Test ---
@@ -70,7 +75,8 @@ if __name__ == "__main__":
     v_random = np.random.randn(2)
     print(f"Random Vector Length: {vector_length(v_random)}")
 
-    # --- vector length test ---
-    vector = [3,4]
-   
-    print(f"vector length:\n{np.sqrt(vector_length(vector))}")
+    # --- -1 to 1 similarity score ---
+    vector_a = np.random.randn(2)
+    vector_b = np.random.randn(2)
+
+    print(f"similarity score of random vectors:\n{cosine_similarity(vector_a, vector_b)}")
