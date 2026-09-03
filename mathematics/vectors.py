@@ -136,3 +136,17 @@ if __name__ == "__main__":
     v_horizontal = [4, 5]     
 
     print(f"Outer Product Matrix:\n{outer_product(v_vertical, v_horizontal)}")
+
+    # --- Code Challenge: Dot Product with Unit Vectors ---
+    v1_challenge = [3, 4]
+    v2_challenge = [5, 12]
+
+    normal_similarity = cosine_similarity(v1_challenge, v2_challenge)
+
+    unit_v1 = create_unit_vector(v1_challenge)
+    unit_v2 = create_unit_vector(v2_challenge)
+
+    optimized_similarity = dot_product(unit_v1, unit_v2)
+
+    print(f"\nNormal Kosinüs Benzerliği Skoru: {normal_similarity}")
+    print(f"Optimize Skor (Birim Vektör Nokta Çarpımı): {optimized_similarity}")
