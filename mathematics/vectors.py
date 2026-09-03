@@ -34,7 +34,7 @@ def matrix_column_dot_product(matrix_a, matrix_b):
     for i in range(num_cols):
         col_a = matrix_a[:, i]
         col_b = matrix_b[:, i]
-        results.append(np.dot(col_a, col_b))
+        results.append(dot_product(col_a, col_b))
         
     return results
 
@@ -59,6 +59,21 @@ def hadamard_product(vector_a, vector_b):
     for i in range(len(vector_a)):
         result.append(vector_a[i] * vector_b[i])  
     return result
+
+def outer_product(vector_a, vector_b):
+    """Calculates the outer product of two vectors, returning a 2D matrix."""
+    matrix = []
+    
+    for i in range(len(vector_a)):
+        row = [] 
+        
+        for j in range(len(vector_b)):
+            
+            row.append(vector_a[i] * vector_b[j])
+            
+        matrix.append(row)
+        
+    return matrix
 
 if __name__ == "__main__":
     # --- Dot Product Test ---
@@ -97,3 +112,9 @@ if __name__ == "__main__":
     vector_b = [3,1,4]
 
     print(f"multiplication (masking) of two vectors:\n{hadamard_product(vector_a, vector_b)}")
+
+    # --- Outer Product Test ---
+    v_vertical = [1, 2, 3]    
+    v_horizontal = [4, 5]     
+
+    print(f"Outer Product Matrix:\n{outer_product(v_vertical, v_horizontal)}")
