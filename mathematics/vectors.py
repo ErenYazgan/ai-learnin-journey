@@ -75,7 +75,25 @@ def outer_product(vector_a, vector_b):
         
     return matrix
 
+def create_unit_vector(vector):
+    """Converts a vector into a unit vector (length of 1) by preserving its direction."""
+    
+    length = vector_length(vector)
+    
+    if length == 0:
+        raise ValueError("Cannot create a unit vector from a zero vector.")
+        
+    unit_vector = []
+    for i in range(len(vector)):
+        unit_vector.append(vector[i] / length)
+        
+    return unit_vector
+
 if __name__ == "__main__":
+    # --- Unit vector Test ---
+    v_test = [3, 4]
+    print(f"unit vector:\n{create_unit_vector(v_test)}")
+
     # --- Dot Product Test ---
     v1 = [1, 2, 3]
     v2 = [4, 5, 6]
