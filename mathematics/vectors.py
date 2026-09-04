@@ -89,6 +89,25 @@ def create_unit_vector(vector):
         
     return unit_vector
 
+import numpy as np
+
+def is_in_span(existing_vectors, new_vector):
+    """
+    Checks if a new vector is within the span of existing vectors.
+    Returns True if it's redundant (in span), False if it adds a new dimension.
+    """
+    matrix = np.column_stack(existing_vectors)
+    
+    original_rank = np.linalg.matrix_rank(matrix)
+    
+    augmented_matrix = np.column_stack((matrix, new_vector))
+    
+    new_rank = np.linalg.matrix_rank(augmented_matrix)
+    
+    if original_rank == new_rank:
+        return True   
+    else:
+        return False  
 if __name__ == "__main__":
     # --- Unit vector Test ---
     v_test = [3, 4]
@@ -150,3 +169,14 @@ if __name__ == "__main__":
 
     print(f"\nNormal Kosinüs Benzerliği Skoru: {normal_similarity}")
     print(f"Optimize Skor (Birim Vektör Nokta Çarpımı): {optimized_similarity}")
+
+    # --- Span / Lineer Independence Test ---
+    room_count = [3, 4, 2]
+    saloon_count = [1, 1, 1]
+    avaliable_data = [room_count, saloon_count]
+
+    total_room = [4, 5, 3] 
+    print(f"Toplam Oda vektörü span içinde mi? : {is_in_span(avaliable_data, total_room)}")
+
+    house_age = [10, 5, 20]
+    print(f"Ev Yaşı vektörü span içinde mi? : {is_in_span(avaliable_data, house_age)}")
