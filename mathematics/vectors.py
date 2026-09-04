@@ -167,8 +167,8 @@ if __name__ == "__main__":
 
     optimized_similarity = dot_product(unit_v1, unit_v2)
 
-    print(f"\nNormal Kosinüs Benzerliği Skoru: {normal_similarity}")
-    print(f"Optimize Skor (Birim Vektör Nokta Çarpımı): {optimized_similarity}")
+    print(f"\nNormal Cosine Similarity Score: {normal_similarity}")
+    print(f"Optimization Score (Unit Vector Dot Product): {optimized_similarity}")
 
     # --- Span / Lineer Independence Test ---
     room_count = [3, 4, 2]
@@ -176,7 +176,7 @@ if __name__ == "__main__":
     avaliable_data = [room_count, saloon_count]
 
     total_room = [4, 5, 3] 
-    print(f"Toplam Oda vektörü span içinde mi? : {is_in_span(avaliable_data, total_room)}")
+    print(f"Is the Total Room vector within the span? : {is_in_span(avaliable_data, total_room)}")
 
     house_age = [10, 5, 20]
-    print(f"Ev Yaşı vektörü span içinde mi? : {is_in_span(avaliable_data, house_age)}")
+    print(f"Is the House Age vector within the span? : {is_in_span(avaliable_data, house_age)}")
