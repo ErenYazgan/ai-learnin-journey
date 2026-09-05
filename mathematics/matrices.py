@@ -51,12 +51,10 @@ if __name__ == "__main__":
     is_linear = np.array_equal(left_side, right_side)
     print(f"Is Matrix-Scalar Multiplication Linear? : {is_linear}")
 
-
     # --- Transpose ---
     
     matrix_original = np.array([[1, 2, 3], 
                                 [4, 5, 6]])
-    
     
     matrix_transposed = matrix_original.T
     
@@ -64,10 +62,20 @@ if __name__ == "__main__":
     print(f"Transposed Shape: {matrix_transposed.shape}")
     print(f"Transposed Matrix (3x2):\n{matrix_transposed}")
 
-    
     matrix_sym = np.array([[1, 7], 
                            [7, 1]])
     
     is_symmetric = np.array_equal(matrix_sym, matrix_sym.T)
     print(f"\nIs the matrix symmetric? : {is_symmetric}")
-    pass
+
+   # ---  Broadcasting  ---
+    
+    data_matrix = np.array([[10, 20, 30],  
+                            [40, 50, 60],  
+                            [70, 80, 90]]) 
+    
+    bias_vector = np.array([1, 2, 3])      
+    
+    broadcast_result = data_matrix + bias_vector
+    
+    print(f"\nBroadcasting Result:\n{broadcast_result}")
