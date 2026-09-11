@@ -23,8 +23,8 @@ for i, lam in enumerate(lambdas):
     avg_dets[i] = np.mean(dets)
 
 plt.plot(lambdas, avg_dets, 's-', linewidth=2, markerfacecolor='black')
-plt.title("Ridge Regularization: Shifting ile Hacim (Det) Kurtarma")
-plt.xlabel("Lambda (Shift Miktarı)")
-plt.ylabel("Ortalama Mutlak Determinant (Hacim)")
+plt.title("Ridge Regularization: Volume (Det) Recovery via Shifting")
+plt.xlabel("Lambda (Shift Amount)")
+plt.ylabel("Average Absolute Determinant (Volume)")
 plt.grid(True)
 plt.show()
